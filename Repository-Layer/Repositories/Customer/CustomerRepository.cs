@@ -45,8 +45,26 @@ namespace Repository_Layer.CustomerRepository
                   </entity>
                 </fetch>";
 
-            return XrmExtensions.Fetch(_Service, fetchXml);
+            return XrmExtensions.FetchSingle(_Service, fetchXml);
         }
+        public Entity GetCustomerByPhoneNumber(string phoneNumber)
+        {
+            string fetchXml = $@"
+                <fetch>
+                    <entity name='initiumc_customer_ss'>
+                    <attribute name='createdon' />
+                    <attribute name='initiumc_customer_ssid' />
+                    <attribute name='initiumc_name' />
+                    <attribute name='initiumc_phonenumber' />
+                    <filter>
+                            <condition attribute='initiumc_phonenumber' operator='eq' value='{phoneNumber}'/>
+                    </filter>
+                    </entity>
+                </fetch>";
+
+            return XrmExtensions.FetchSingle(_Service, fetchXml);
+        }
+
         public void AddCustomer(Entity Customer)
         {
             _Service.Create(Customer);

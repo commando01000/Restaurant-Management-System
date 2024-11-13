@@ -7,7 +7,7 @@ namespace CRM.Repository
 {
     public static class XrmExtensions
     {
-        public static Entity Fetch(this IOrganizationService _Service, string Query)
+        public static Entity FetchSingle(this IOrganizationService _Service, string Query)
         {
             EntityCollection Result = _Service.RetrieveMultiple(new FetchExpression(Query));
             // return general settings
