@@ -10,7 +10,7 @@ namespace Service_Layer.Dtos
     {
         public Guid Id { get; set; }
         public CustomerDto customer { get; set; }
-        public List<OrderItemDto> orderItems { get; set; }
+        public List<OrderItemDto> orderItems { get; set; } = new List<OrderItemDto>();
         public decimal discount { get; set; }
         public decimal orderPrice { get; set; }
         public int? orderStatus { get; set; }

@@ -11,7 +11,7 @@ namespace Service_Layer.Dtos
         public Guid Id { get; set; }
         public int Quantity { get; set; }
         public MenuItemDto MenuItem { get; set; }
-        public OrderDto Order { get; set; }
+        public Guid OrderId { get; set; }
         public decimal totalPrice { get; set; }
     }
 }

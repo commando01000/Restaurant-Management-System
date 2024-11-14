@@ -3,6 +3,7 @@ using Microsoft.Xrm.Sdk;
 using Repository_Layer.Repositories.Menu_Item;
 using Service_Layer.Dtos;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -50,7 +51,17 @@ namespace Service_Layer.Services.Menu_Item
 
         public MenuItemDto getMenuItemById(Guid id)
         {
-            throw new NotImplementedException();
+            var MenuItem = _menuItemRepository.GetMenuItemById(id);
+
+            var MenuItemDto = new MenuItemDto
+            {
+                Id = MenuItem.Id,
+                description = MenuItem.GetAttributeValue<string>("initiumc_description"),
+                itemName = MenuItem.GetAttributeValue<string>("initiumc_itemname"),
+                itemStatus = MenuItem.GetOptionSetValue("initiumc_status").Value,
+                price = MenuItem.GetAttributeValue<Money>("initiumc_price").Value,
+            };
+            return MenuItemDto;
         }
 
         public void updateMenuItem(MenuItemDto menuItem)
