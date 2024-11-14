@@ -2,8 +2,10 @@ using Repository_Layer.CustomerRepository;
 using Repository_Layer.Repositories.Menu_Item;
 using Repository_Layer.Repositories.Order;
 using Repository_Layer.Repositories.OrderItem;
+using Service_Layer.Services;
 using Service_Layer.Services.Customer;
 using Service_Layer.Services.Menu_Item;
+using Service_Layer.Services.OrderItems;
 using Service_Layer.Services.Orders;
 using System;
 
@@ -57,6 +59,7 @@ namespace Restaurant_Management_System
             container.RegisterType<IOrderService, OrderService>();
             container.RegisterType<IOrderRepository, OrderRepository>();
             container.RegisterType<IOrderItemRepository, OrderItemRepository>();
+            container.RegisterType<IOrderItemService, OrderItemService>();
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Service_Layer.Dtos;
-using Service_Layer.Services;
+﻿using Service_Layer.Services;
 using Service_Layer.Services.Menu_Item;
 using Service_Layer.Services.Orders;
 using System;
@@ -10,41 +9,44 @@ using System.Web.Mvc;
 
 namespace Restaurant_Management_System.Controllers.Orders
 {
-    public class OrderController : Controller
+    public class OrderItemsController : Controller
     {
-        private readonly IOrderService _orderService;
         private readonly IMenuItemService _menuItemService;
         private readonly IOrderItemService _orderItemService;
+        private readonly IOrderService _orderService;
 
-        public OrderController(IOrderService orderService, IMenuItemService menuItemService, IOrderItemService orderItemService)
+        public OrderItemsController(IMenuItemService menuItemService, IOrderItemService orderItemService, IOrderService orderService)
         {
-            _orderService = orderService;
             _menuItemService = menuItemService;
             _orderItemService = orderItemService;
+            _orderService = orderService;
         }
-        // GET: Order
+        // GET: OrderItems
         public ActionResult Index()
         {
-            var allOrders = _orderService.getAllOrders();
-            return View(allOrders);
+            return View();
         }
 
-        // GET: Order/Details/5
+        // GET: OrderItems/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Order/Create
+        // GET: OrderItems/Create
         public ActionResult Create()
         {
-            var menuItems = _menuItemService.getAllMenuItems();
-            ViewBag.MenuItems = menuItems;
+            // prepare the customer
+
+            // prepare the order items
+
+            // prepare the order for reservation
+
 
             return View();
         }
 
-        // POST: Order/Create
+        // POST: OrderItems/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -60,13 +62,13 @@ namespace Restaurant_Management_System.Controllers.Orders
             }
         }
 
-        // GET: Order/Edit/5
+        // GET: OrderItems/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Order/Edit/5
+        // POST: OrderItems/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -82,13 +84,13 @@ namespace Restaurant_Management_System.Controllers.Orders
             }
         }
 
-        // GET: Order/Delete/5
+        // GET: OrderItems/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Order/Delete/5
+        // POST: OrderItems/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
