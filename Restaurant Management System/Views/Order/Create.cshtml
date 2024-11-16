@@ -86,7 +86,9 @@
     @Scripts.Render("~/bundles/jqueryval")
 
     <script>
-        // Calculate the total price whenever quantities or discount change
+        /**
+         * Calculate the total price whenever quantities or discount change
+         */
         function calculateTotal() {
             let total = 0;
             const discount = parseFloat($('.discount-input').val()) || 0;
